@@ -1,0 +1,304 @@
+﻿<Window x:Class="Tema2.Views.BoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BoardV
+
+        
+        
+        
+        iew" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="Black"/>
+        <Border Grid.Row="0" Grid.Column="2" Background="Black"/>
+        <Border Grid.Row="0" Grid.Column="4" Background="Black"/>
+        <Border Grid.Row="0" Grid.Column="6" Background="Black"/>
+        <Border Grid.Row="1" Grid.Column="1" Background="Black"/>
+        <Border Grid.Row="1" Grid.Column="3" Background="Black"/>
+        <Border Grid.Row="1" Grid.Column="5" Background="Black"/>
+        <Border Grid.Row="1" Grid.Column="7" Background="Black"/>
+        <Border Grid.Row="2" Grid.Column="0" Background="Black"/>
+        <Border Grid.Row="2" Grid.Column="2" Background="Black"/>
+        <Border Grid.Row="2" Grid.Column="4" Background="Black"/>
+        <Border Grid.Row="2" Grid.Column="6" Background="Black"/>
+        <Border Grid.Row="3" Grid.Column="1" Background="Black"/>
+        <Border Grid.Row="3" Grid.Column="3" Background="Black"/>
+        <Border Grid.Row="3" Grid.Column="5" Background="Black"/>
+        <Border Grid.Row="3" Grid.Column="7" Background="Black"/>
+        <Border Grid.Row="4" Grid.Column="0" Background="Black"/>
+        <Border Grid.Row="4" Grid.Column="2" Background="Black"/>
+        <Border Grid.Row="4" Grid.Column="4" Background="Black"/>
+        <Border Grid.Row="4" Grid.Column="6" Background="Black"/>
+        <Border Grid.Row="5" Grid.Column="1" Background="Black"/>
+        <Border Grid.Row="5" Grid.Column="3" Background="Black"/>
+        <Border Grid.Row="5" Grid.Column="5" Background="Black"/>
+        <Border Grid.Row="5" Grid.Column="7" Background="Black"/>
+        <Border Grid.Row="6" Grid.Column="0" Background="Black"/>
+        <Border Grid.Row="6" Grid.Column="2" Background="Black"/>
+        <Border Grid.Row="6" Grid.Column="4" Background="Black"/>
+        <Border Grid.Row="6" Grid.Column="6" Background="Black"/>
+        <Border Grid.Row="7" Grid.Column="1" Background="Black"/>
+        <Border Grid.Row="7" Grid.Column="3" Background="Black"/>
+        <Border Grid.Row="7" Grid.Column="5" Background="Black"/>
+        <Border Grid.Row="7" Grid.Column="7" Background="Black"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="8" Text="Player turn:" FontSize="27" TextAlignment="Center"></TextBlock>
+        <TextBlock x:Name="PlayerNameText" Grid.Row="1" Grid.Column="8" TextAlignment="Center"></TextBlock>
+
+        <StackPanel Grid.Row="2" Grid.Column="8" Orientation="Vertical">
+            <TextBlock TextAlignment="Center" Text="Piece selected:" FontSize="23"></TextBlock>
+            <TextBlock Text="Row: " />
+        </StackPanel>
+
+        <StackPanel Grid.Column="8" Grid.Row="3" Orientation="Vertical">
+            <TextBox x:Name="PieceSelectedRow" Text="{Binding CurrentLine, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Text="Column:" />
+            <TextBox x:Name="PieceSelectedColumn" Text="{Binding CurrentColumn, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+        <!--<TextBox x:Name="PieceSelected" Grid.Column="8" Grid.Row="3" Text="{Binding CurrentColumn, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"></TextBox> -->
+        <!--<TextBlock x:Name="PieceSelected2" Grid.Column="8" Grid.Row="3" Text="{Binding CurrentColumn, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"></TextBlock>-->
+        <StackPanel Grid.Row="4" Grid.Column="8">
+            <Button x:Name="Deselect" Content="Deselect" Click="DeselectCommand" ></Button>
+            <TextBlock Text="Where to move:"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="8">
+            <TextBlock Text="Line             ,            Column"></TextBlock>
+            <TextBox x:Name="PieceSelectedRow2" Text="{Binding FutureLine, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox x:Name="PieceSelectedColumn2" Text="{Binding FutureColumn, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="8">
+            <Button x:Name="MoveButton" Content="Move" Click="MoveButtonToNewPosition" Height="53" ></Button>
+            <!--<TextBlock Grid.Column="8" Grid.Row="6" Text="Pieces remaining:" TextAlignment="Center"></TextBlock>-->
+        </StackPanel>
+        
+        <Button x:Name="SaveButton" Click="SaveButton_Click" Grid.Column="8" Grid.Row="8" Content="SAVE GAME"></Button>
+        
+        
+
+        <Button x:Name="L0C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="0">
+            <Image x:Name="ImageL0C0"></Image>
+        </Button>
+        <Button x:Name="L0C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="0">
+            <Image x:Name="ImageL0C1"></Image>
+        </Button>
+        <Button x:Name="L0C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="0">
+            <Image x:Name="ImageL0C2"></Image>
+        </Button>
+        <Button x:Name="L0C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="0">
+            <Image x:Name="ImageL0C3"></Image>
+        </Button>
+        <Button x:Name="L0C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="0">
+            <Image x:Name="ImageL0C4"></Image>
+        </Button>
+        <Button x:Name="L0C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="0">
+            <Image x:Name="ImageL0C5"></Image>
+        </Button>
+        <Button x:Name="L0C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="0">
+            <Image x:Name="ImageL0C6"></Image>
+        </Button>
+        <Button x:Name="L0C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="0">
+            <Image x:Name="ImageL0C7"></Image>
+        </Button>
+        <Button x:Name="L1C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="1">
+            <Image x:Name="ImageL1C0"></Image>
+        </Button>
+        <Button x:Name="L1C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="1">
+            <Image x:Name="ImageL1C1"></Image>
+        </Button>
+        <Button x:Name="L1C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="1">
+            <Image x:Name="ImageL1C2"></Image>
+        </Button>
+        <Button x:Name="L1C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="1">
+            <Image x:Name="ImageL1C3"></Image>
+        </Button>
+        <Button x:Name="L1C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="1">
+            <Image x:Name="ImageL1C4"></Image>
+        </Button>
+        <Button x:Name="L1C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="1">
+            <Image x:Name="ImageL1C5"></Image>
+        </Button>
+        <Button x:Name="L1C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="1">
+            <Image x:Name="ImageL1C6"></Image>
+        </Button>
+        <Button x:Name="L1C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="1">
+            <Image x:Name="ImageL1C7"></Image>
+        </Button>
+        <Button x:Name="L2C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="2">
+            <Image x:Name="ImageL2C0"></Image>
+        </Button>
+        <Button x:Name="L2C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="2">
+            <Image x:Name="ImageL2C1"></Image>
+        </Button>
+        <Button x:Name="L2C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="2">
+            <Image x:Name="ImageL2C2"></Image>
+        </Button>
+        <Button x:Name="L2C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="2">
+            <Image x:Name="ImageL2C3"></Image>
+        </Button>
+        <Button x:Name="L2C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="2">
+            <Image x:Name="ImageL2C4"></Image>
+        </Button>
+        <Button x:Name="L2C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="2">
+            <Image x:Name="ImageL2C5"></Image>
+        </Button>
+        <Button x:Name="L2C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="2">
+            <Image x:Name="ImageL2C6"></Image>
+        </Button>
+        <Button x:Name="L2C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="2">
+            <Image x:Name="ImageL2C7"></Image>
+        </Button>
+
+        <Button x:Name="L3C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="3">
+            <Image x:Name="ImageL3C0"></Image>
+        </Button>
+        <Button x:Name="L3C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="3">
+            <Image x:Name="ImageL3C1"></Image>
+        </Button>
+        <Button x:Name="L3C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="3">
+            <Image x:Name="ImageL3C2"></Image>
+        </Button>
+        <Button x:Name="L3C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="3">
+            <Image x:Name="ImageL3C3"></Image>
+        </Button>
+        <Button x:Name="L3C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="3">
+            <Image x:Name="ImageL3C4"></Image>
+        </Button>
+        <Button x:Name="L3C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="3">
+            <Image x:Name="ImageL3C5"></Image>
+        </Button>
+        <Button x:Name="L3C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="3">
+            <Image x:Name="ImageL3C6"></Image>
+        </Button>
+        <Button x:Name="L3C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="3">
+            <Image x:Name="ImageL3C7"></Image>
+        </Button>
+
+        <Button x:Name="L4C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="4">
+            <Image x:Name="ImageL4C0"></Image>
+        </Button>
+        <Button x:Name="L4C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="4">
+            <Image x:Name="ImageL4C1"></Image>
+        </Button>
+        <Button x:Name="L4C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="4">
+            <Image x:Name="ImageL4C2"></Image>
+        </Button>
+        <Button x:Name="L4C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="4">
+            <Image x:Name="ImageL4C3"></Image>
+        </Button>
+        <Button x:Name="L4C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="4">
+            <Image x:Name="ImageL4C4"></Image>
+        </Button>
+        <Button x:Name="L4C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="4">
+            <Image x:Name="ImageL4C5"></Image>
+        </Button>
+        <Button x:Name="L4C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="4">
+            <Image x:Name="ImageL4C6"></Image>
+        </Button>
+        <Button x:Name="L4C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="4">
+            <Image x:Name="ImageL4C7"></Image>
+        </Button>
+
+        <Button x:Name="L5C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="5">
+            <Image x:Name="ImageL5C0"></Image>
+        </Button>
+        <Button x:Name="L5C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="5">
+            <Image x:Name="ImageL5C1"></Image>
+        </Button>
+        <Button x:Name="L5C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="5">
+            <Image x:Name="ImageL5C2"></Image>
+        </Button>
+        <Button x:Name="L5C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="5">
+            <Image x:Name="ImageL5C3"></Image>
+        </Button>
+        <Button x:Name="L5C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="5">
+            <Image x:Name="ImageL5C4"></Image>
+        </Button>
+        <Button x:Name="L5C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="5">
+            <Image x:Name="ImageL5C5"></Image>
+        </Button>
+        <Button x:Name="L5C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="5">
+            <Image x:Name="ImageL5C6"></Image>
+        </Button>
+        <Button x:Name="L5C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="5">
+            <Image x:Name="ImageL5C7"></Image>
+        </Button>
+
+        <Button x:Name="L6C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="6">
+            <Image x:Name="ImageL6C0"></Image>
+        </Button>
+        <Button x:Name="L6C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="6">
+            <Image x:Name="ImageL6C1"></Image>
+        </Button>
+        <Button x:Name="L6C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="6">
+            <Image x:Name="ImageL6C2"></Image>
+        </Button>
+        <Button x:Name="L6C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="6">
+            <Image x:Name="ImageL6C3"></Image>
+        </Button>
+        <Button x:Name="L6C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="6">
+            <Image x:Name="ImageL6C4"></Image>
+        </Button>
+        <Button x:Name="L6C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="6">
+            <Image x:Name="ImageL6C5"></Image>
+        </Button>
+        <Button x:Name="L6C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="6">
+            <Image x:Name="ImageL6C6"></Image>
+        </Button>
+        <Button x:Name="L6C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="6">
+            <Image x:Name="ImageL6C7"></Image>
+        </Button>
+
+        <Button x:Name="L7C0" Opacity="0.2" Click="ButtonCommand" Grid.Column="0" Grid.Row="7">
+            <Image x:Name="ImageL7C0"></Image>
+        </Button>
+        <Button x:Name="L7C1" Opacity="0.2" Click="ButtonCommand" Grid.Column="1" Grid.Row="7">
+            <Image x:Name="ImageL7C1"></Image>
+        </Button>
+        <Button x:Name="L7C2" Opacity="0.2" Click="ButtonCommand" Grid.Column="2" Grid.Row="7">
+            <Image x:Name="ImageL7C2"></Image>
+        </Button>
+        <Button x:Name="L7C3" Opacity="0.2" Click="ButtonCommand" Grid.Column="3" Grid.Row="7">
+            <Image x:Name="ImageL7C3"></Image>
+        </Button>
+        <Button x:Name="L7C4" Opacity="0.2" Click="ButtonCommand" Grid.Column="4" Grid.Row="7">
+            <Image x:Name="ImageL7C4"></Image>
+        </Button>
+        <Button x:Name="L7C5" Opacity="0.2" Click="ButtonCommand" Grid.Column="5" Grid.Row="7">
+            <Image x:Name="ImageL7C5"></Image>
+        </Button>
+        <Button x:Name="L7C6" Opacity="0.2" Click="ButtonCommand" Grid.Column="6" Grid.Row="7">
+            <Image x:Name="ImageL7C6"></Image>
+        </Button>
+        <Button x:Name="L7C7" Opacity="0.2" Click="ButtonCommand" Grid.Column="7" Grid.Row="7">
+            <Image x:Name="ImageL7C7"></Image>
+        </Button>
+
+
+    </Grid>
+
+</Window>
